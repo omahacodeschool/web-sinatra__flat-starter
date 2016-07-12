@@ -1,0 +1,40 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  Exclude:
+    - 'db/*'
+    - 'main.rb'
+    - 'config.ru'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'tests/test_helper.rb'
+    - 'tests/database_cleaner.rb'
+    - 'config/*'
+  TargetRubyVersion: 2.3
+
+Style/Encoding:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/TrailingBlankLines:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
