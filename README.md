@@ -1,38 +1,31 @@
-After you've forked and cloned this repo, navigate to the directory and run `bin/setup`. This is not a PHP application, so your MAMP installation and Apache won't work for this. Instead, you'll have to start a web server manually by typing `rackup` from the **~/Code/bechdel/** folder. Then go to <http://localhost:9292> to see the website.
+This is a code base for you to start your own project from.
 
-When you run `rackup` in terminal, it'll take over that tab entirely. That is, it won't return you to the command-line prompt. The server will be _running_ in that tab, so you'll see all of the server's logs streaming by there as you use the website. (It's pretty cool.)
+You **will not** be forking this repo. You already have a repo! It's where you've been noting your issues and things. So your goal isn't to create a new repo (which forking would do) but rather to get the files from this repo into your existing repo.
 
-To quit the server, press `CONTROL + C` in terminal. That'll exit the server and return you to the command-line prompt.
+First, clone your existing repo (It's empty for now, which is fine). Just one of you should do the following steps, but everyone should watch and pay attention:
 
-# Issues
+When you clone your repo, it'll make a new folder for your project. If you were to clone _this_ repo inside of that folder, it would make _another_ folder with this repo's files. That wouldn't be the end of the world, but it'd be annoying to have an unnecessary folder. What would be better is for all of this repo's files to be copied into your existing project folder.
 
-Here are a few things you can try to work on in this application. They're organized into categories of difficulty.
+To do that, add this repo as a **remote** for your repo. Go into your local copy of the project and run:
 
-For some of the tasks, you'll need the design comps and related graphics assets. You can download those [here](https://cl.ly/gfWZ/bollywood-bechdel-designs.zip).
+```
+git remote add ocs git@github.com:omahacodeschool/web-sinatra__flat-starter.git
+```
 
-## Most Straightforward
+This will add a remote named "ocs". You also have another remote, called "origin". That's your repo. So you have two remotes! That's okay!
 
-Start with these! You don't have to finish all of these before moving on to the next section; but if you can't make any progress at all with these, then the next section will be impossible.
+Once you've added the remote, run this to pull down all of the files from this repo:
 
-- [ ] Fix the link to log in.
-- [ ] There should be a title link to the homepage in the top-left corner on all pages.
-- [ ] Implement designs from available comps.
-- [ ] Add a  page that shows all of the movies that have been rated, whether or not they pass the Bechdel test.
-- [ ] If a movie has been rated as Bechdel-worthy, add the *badge* graphic to its page (See the assets/ folder).
+```
+git pull ocs master
+```
 
-## Difficult
+This is saying, "I want to do a `git pull` but from the 'ocs' remote."
 
-None of these are required. Consider them bonuses. But if you want to try, go ahead.
+You should now have all the files! You don't need to use the 'ocs' remote anymore. Now just work as you normally would.
 
-- [ ] Don't let a user sign up without a name and email address.
-- [ ] Don't let a user sign up with a weak password. (Decide for yourself what constitutes a weak password. Start simple, like a minimum number of characters.)
-- [ ] If user is not logged in, don't even show them the form to rate a movie's Bechdel-worthiness. Instead, show some kind of message telling them to log in.
-- [ ] Search requires input to be very exact. Should be at least case-insensitive.
-- [ ] If someone tries to view a movie that doesn't exist (e.g. they type in `/movies/999/view`, when there is no movie with and ID of 999), show them a nice message saying that the movie could not be found.
+Your first step should be doing a `git push` so that your GitHub repo is updated and so your collaborators can do a `git pull` to get the files onto their computer.
 
-## Borderline-Impossible Without Further Instruction
+---
 
-These are probably out of your reach, since we haven't covered material that is fundamental to the tasks. We're just listing them here for you to possibly return to some time in the future.
-
-- [ ] Ratings should be per-user, not one-per-movie.
-- [ ] Should be able to lock a movie out to prevent future votes (e.g. once a movie is sufficiently rated as Bechdel-worthy, no need to get more votes).
+Remember that `rackup` will run the server. And note that you cannot have two servers running on the same port at the same time; so if you have another site (like the Bechdel application) that is running on port 9292, that'll cause an error.
