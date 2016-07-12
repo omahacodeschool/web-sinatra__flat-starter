@@ -21,36 +21,14 @@ require 'sinatra/reloader'
 # This sets up a class called MyApp, which you will use in controllers.
 require 'sinatra/base'
 class MyApp < Sinatra::Base
-  register Sinatra::ActiveRecordExtension
   register Sinatra::Reloader
   set :sessions, true
   set :bind, '0.0.0.0'
   set :show_exceptions, true
   set :views, Proc.new { File.join(root, "app", "views") }
 end
-require 'sinatra/activerecord'
-require './config/environments'
-
-def database_exists?
-  ActiveRecord::Base.connection rescue ActiveRecord::NoDatabaseError ? false : true
-end
-
-if database_exists?
-  require_relative "db/define_schema"
-  schema_file = File.open('db/schema.rb', 'w')
-  ActiveRecord::SchemaDumper.dump ActiveRecord::Base.connection, schema_file
-  schema_file.close
-else
-  puts "Please run the bin/setup command again."
-  puts "You might see warnings that the databases already exist. That is OK."
-  puts "But if you keep seeing this message, then ask for help."
-end
-
-require_relative "./config/_uploader.rb"
 
 require 'tilt/erb'
-
-Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 Dir[File.dirname(__FILE__) + '/app/models/*.rb'].each {|file| require file }
 
