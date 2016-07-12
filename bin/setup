@@ -1,6 +1,3 @@
 #!/bin/bash
 
 bundle install
-
-echo -e "\nInitializing new database..."
-bundle exec rake db:create
